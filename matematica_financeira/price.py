@@ -39,7 +39,7 @@ def generate_question():
 
 # Define a função que verifica a resposta do usuário
 def check_answer(question, correct_answer, user_answer):
-    if (user_answer - correct_answer) <= 0.01:
+    if (int(user_answer) - correct_answer) <= 0.01:
         return "Resposta correta!"
     else:
         return "Resposta incorreta. A resposta correta é: " + correct_answer
