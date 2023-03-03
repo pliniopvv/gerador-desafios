@@ -35,19 +35,19 @@ def generate_question():
     # Define a resposta correta
     correct_answer = f"O valor da prestação mensal é de R${monthly_payment:.2f}. E o valor dos juros na {monthly_meta} parcela é de R${meta_juros:.2f}."
     
-    return (question, correct_answer)
+    return (question, meta_juros, correct_answer)
 
 # Define a função que verifica a resposta do usuário
-def check_answer(question, correct_answer, user_answer):
-    if (int(user_answer) - correct_answer) <= 0.01:
-        return "Resposta correta!"
+def check_answer(question, correct_answer, user_answer, show_answer):
+    if abs(float(user_answer) - correct_answer) <= 0.01:
+    	return "Resposta correta! R: " + show_answer
     else:
-        return "Resposta incorreta. A resposta correta é: " + correct_answer
+    	return "Resposta incorreta. R: " + show_answer
 
 # Gera uma questão aleatória e solicita que o usuário responda
-question, correct_answer = generate_question()
+question, correct_answer, show_answer = generate_question()
 print(question)
 user_answer = input("Resposta: ")
 
 # Verifica a resposta do usuário e exibe o resultado
-print(check_answer(question, correct_answer, user_answer))
+print(check_answer(question, correct_answer, user_answer, show_answer))
